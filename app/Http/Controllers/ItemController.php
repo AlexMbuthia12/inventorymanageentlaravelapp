@@ -39,29 +39,49 @@ class ItemController extends Controller
         return view('items.show', compact('item')); // Return the view for showing an item
     }
 
-    // Show the form for editing the specified resource
-    public function edit(Item $item)
-    {
-        return view('items.edit', compact('item')); // Return the view for editing an item
-    }
-
-    // Update the specified resource in storage
-    public function update(Request $request, Item $item)
-    {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'quantity' => 'required|integer',
-            'price' => 'required|numeric',
-        ]);
-
-        $item->update($request->all()); // Update the item
-        return redirect()->route('items.index')->with('success', 'Item updated successfully.');
-    }
-
+    
     // Remove the specified resource from storage
     public function destroy(Item $item)
     {
         $item->delete(); // Delete the item
         return redirect()->route('items.index')->with('success', 'Item deleted successfully.');
     }
+// // Show the form for editing the specified resource
+//     public function edit(Item $item)
+//     {
+//         return view('items.edit', compact('item')); // Return the view for editing an item
+//     }
+
+//     // Update the specified resource in storage
+//     public function update(Request $request, Item $item)
+//     {
+//         $request->validate([
+//             'name' => 'required|string|max:255',
+//             'quantity' => 'required|integer',
+//             'price' => 'required|numeric',
+//         ]);
+
+//         $item->update($request->all()); // Update the item
+//         return redirect()->route('items.index')->with('success', 'Item updated successfully.');
+//     }
+// Show the form for editing the specified resource
+    public function edit($id)
+    {
+        $item = Item::findOrFail($id);
+        return view('items.edit', compact('item'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'quantity' => 'required|integer|min:0',
+        ]);
+
+        $item = Item::findOrFail($id);
+        $item->quantity = $request->quantity;
+        $item->save();
+
+        return redirect()->route('items.index')->with('success', 'Item updated successfully!');
+    }
+
 }
