@@ -13,6 +13,12 @@
             <a href="{{ route('items.create') }}" class="px-6 py-2 bg-green-500 text-white font-semibold rounded hover:bg-green-600 transition">Add New Item</a>
         </header>
 
+        <!-- Display Total Inventory Price -->
+        <div class="mb-6 p-4 bg-gradient-to-r from-green-200 via-green-100 to-green-200 rounded-lg shadow-md text-center">
+            <h2 class="text-2xl font-semibold text-green-800">Total Inventory Value</h2>
+            <p class="text-xl font-bold text-green-700">${{ number_format($totalInventoryPrice, 2) }}</p>
+        </div>
+
         <section>
             <h2 class="text-2xl font-semibold text-gray-800 mb-4">Inventory List</h2>
             @if ($items->isEmpty())
@@ -21,10 +27,12 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     @foreach ($items as $item)
                         <div class="bg-gradient-to-br from-white via-gray-100 to-gray-200 p-4 rounded-lg shadow-md hover:shadow-lg transition">
-                            <h3 class="text-lg font-bold text-gray-700 mb-2">ID: {{ $item->id }}</h3>
+                            <!-- <h3 class="text-lg font-bold text-gray-700 mb-2">ID: {{ $item->id }}</h3> -->
                             <p class="text-gray-600"><strong>Name:</strong> {{ $item->name }}</p>
                             <p class="text-gray-600"><strong>Quantity:</strong> {{ $item->quantity }}</p>
-                            <p class="text-gray-600"><strong>Price:</strong> ${{ number_format($item->price, 2) }}</p>
+                            <p class="text-gray-600"><strong>Unit Price:</strong> ${{ number_format($item->unit_price, 2) }}</p>
+                            <p class="text-gray-600"><strong>Total Unit Price:</strong> ${{ number_format($item->total_unit_price, 2) }}</p>
+                            <p class="text-gray-600"><strong>Item Total Price:</strong> ${{ number_format($item->price, 2) }}</p>
                             <div class="mt-4 flex justify-between items-center">
                                 <a href="{{ route('items.edit', $item->id) }}" class="px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 transition">Edit</a>
                                 <form action="{{ route('items.destroy', $item->id) }}" method="POST" class="inline-block">
@@ -37,12 +45,12 @@
                     @endforeach
                 </div>
             @endif
+
             @if (session('success'))
-        <div class="bg-green-100 text-green-800 p-4 rounded mb-4">
-        {{ session('success') }}
-        </div>
-        @endif
- 
+                <div class="bg-green-100 text-green-800 p-4 rounded mb-4">
+                    {{ session('success') }}
+                </div>
+            @endif
         </section>
     </div>
 </body>

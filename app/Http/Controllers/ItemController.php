@@ -9,10 +9,31 @@ class ItemController extends Controller
 {
     // Display a listing of the resource
     public function index()
-    {
-        $items = Item::all(); // Fetch all items from the database
-        return view('welcome', compact('items')); // Pass items to the view
-    }
+{
+    $items = Item::all()->map(function ($item) {
+        $item->total_unit_price = $item->quantity * $item->unit_price; // Calculate total unit price
+        return $item;
+    });
+
+    $totalInventoryPrice = $items->sum('price'); // Sum of all item prices
+
+    return view('welcome', compact('items', 'totalInventoryPrice'));
+}
+
+
+//     public function index()
+// {
+//     $items = Item::all();
+//     $totalInventoryPrice = $items->sum('price'); // Sum of all item prices
+
+//     return view('welcome', compact('items', 'totalInventoryPrice'));
+// }
+
+    // public function index()
+    // {
+    //     $items = Item::all(); // Fetch all items from the database
+    //     return view('welcome', compact('items')); // Pass items to the view
+    // }
 
     // Show the form for creating a new resource
     public function create()
@@ -22,16 +43,53 @@ class ItemController extends Controller
 
     // Store a newly created resource in storage
     public function store(Request $request)
-    {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'quantity' => 'required|integer',
-            'price' => 'required|numeric',
-        ]);
+{
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'quantity' => 'required|integer|min:0',
+        'unit_price' => 'required|numeric|min:0',
+    ]);
 
-        Item::create($request->all()); // Create a new item
-        return redirect()->route('items.index')->with('success', 'Item created successfully.');
-    }
+    $price = $request->quantity * $request->unit_price;
+
+    Item::create([
+        'name' => $request->name,
+        'quantity' => $request->quantity,
+        'unit_price' => $request->unit_price,
+        'price' => $price,
+    ]);
+
+    return redirect()->route('items.index')->with('success', 'Item created successfully!');
+}
+ 
+//     public function store(Request $request)
+// {
+//     $request->validate([
+//         'name' => 'required|string|max:255',
+//         'quantity' => 'required|integer|min:0',
+//         'unit_price' => 'required|numeric|min:0',
+//     ]);
+
+//     Item::create([
+//         'name' => $request->name,
+//         'quantity' => $request->quantity,
+//         'unit_price' => $request->unit_price,
+//         'price' => $request->quantity * $request->unit_price,
+//     ]);
+
+//     return redirect()->route('items.index')->with('success', 'Item created successfully!');
+// }
+//     public function store(Request $request)
+//     {
+//         $request->validate([
+//             'name' => 'required|string|max:255',
+//             'quantity' => 'required|integer',
+//             'price' => 'required|numeric',
+//         ]);
+
+//         Item::create($request->all()); // Create a new item
+//         return redirect()->route('items.index')->with('success', 'Item created successfully.');
+//     }
 
     // Display the specified resource
     public function show(Item $item)
@@ -72,16 +130,17 @@ class ItemController extends Controller
     }
 
     public function update(Request $request, $id)
-    {
-        $request->validate([
-            'quantity' => 'required|integer|min:0',
-        ]);
+{
+    $request->validate([
+        'quantity' => 'required|integer|min:0',
+    ]);
 
-        $item = Item::findOrFail($id);
-        $item->quantity = $request->quantity;
-        $item->save();
+    $item = Item::findOrFail($id);
+    $item->quantity = $request->quantity;
+    $item->price = $request->quantity * $item->unit_price; // Calculate the new total price
+    $item->save();
 
-        return redirect()->route('items.index')->with('success', 'Item updated successfully!');
-    }
+    return redirect()->route('items.index')->with('success', 'Item updated successfully!');
+}
 
 }
