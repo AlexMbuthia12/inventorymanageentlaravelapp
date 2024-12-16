@@ -3,6 +3,7 @@ use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\SalesController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -47,4 +48,11 @@ Route::resource('items', ItemController::class);
 Route::get('/items/{id}/edit', [ItemController::class, 'edit'])->name('items.edit');
 Route::put('/items/{id}', [ItemController::class, 'update'])->name('items.update');
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
+
+
+
+Route::resource('sales', SalesController::class);
+Route::get('/sales/create/{id}', [SalesController::class, 'create'])->name('sales.create');
+Route::post('/sales/{itemId}', [SalesController::class, 'store'])->name('sales.store');
+
 require __DIR__.'/auth.php';
