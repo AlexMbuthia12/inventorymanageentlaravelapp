@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/c82a3dae-68ef-4a1e-9ea9-1d5c09fa2b9c)
+
 This is the system landing page where the user chooses whether to login if they already have an account or Register if not.
 ![image alt](https://github.com/AlexMbuthia12/inventorymanageentlaravelapp/blob/master/Inventory%20readme%20imgs/Landing%20Page.jpg?raw=true)
 
