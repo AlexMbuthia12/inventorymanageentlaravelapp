@@ -1,4 +1,5 @@
 <x-guest-layout>
+    {{-- <div class="max-w-md mx-auto p-4 bg-white shadow-md rounded-lg"> --}}
     <form method="POST" action="{{ route('register') }}">
         @csrf
 
@@ -49,4 +50,5 @@
             </x-primary-button>
         </div>
     </form>
+{{-- </div> --}}
 </x-guest-layout>
