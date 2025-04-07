@@ -1,3 +1,12 @@
+This is the system landing page where the user chooses whether to login if they already have an account or Register if not.
+![image alt](https://github.com/AlexMbuthia12/inventorymanageentlaravelapp/blob/master/Inventory%20readme%20imgs/Landing%20Page.jpg?raw=true)
+
+This is the login view, here the user enters their email and pasword(which are authenticated from the database)
+![image alt](https://github.com/AlexMbuthia12/inventorymanageentlaravelapp/blob/master/Inventory%20readme%20imgs/loginView1.jpg?raw=true)
+
+![image alt]()
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
