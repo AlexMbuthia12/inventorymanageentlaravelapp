@@ -1,10 +1,29 @@
+![image](https://github.com/user-attachments/assets/c82a3dae-68ef-4a1e-9ea9-1d5c09fa2b9c)
 This is the system landing page where the user chooses whether to login if they already have an account or Register if not.
 ![image alt](https://github.com/AlexMbuthia12/inventorymanageentlaravelapp/blob/master/Inventory%20readme%20imgs/Landing%20Page.jpg?raw=true)
 
 This is the login view, here the user enters their email and pasword(which are authenticated from the database)
 ![image alt](https://github.com/AlexMbuthia12/inventorymanageentlaravelapp/blob/master/Inventory%20readme%20imgs/loginView1.jpg?raw=true)
 
-![image alt]()
+This is the Registerpage.
+![image alt](https://github.com/AlexMbuthia12/inventorymanageentlaravelapp/blob/master/Inventory%20readme%20imgs/registerPage.jpg?raw=true)
+
+This is the Main page where the system displays all company inventory. Total Inventory Value and Total sales
+values are updated Dynamically and so does all item properties. This view also has the Delete and Logout feature/button.
+![image alt](https://github.com/AlexMbuthia12/inventorymanageentlaravelapp/blob/master/Inventory%20readme%20imgs/homePage1.png?raw=true)
+![image alt](https://github.com/AlexMbuthia12/inventorymanageentlaravelapp/blob/master/Inventory%20readme%20imgs/homePage2.png?raw=true)
+![image alt](https://github.com/AlexMbuthia12/inventorymanageentlaravelapp/blob/master/Inventory%20readme%20imgs/HomePage3.jpg?raw=true)
+ 
+This is the view for creating or adding new items with the total price dynamically displayed at the totao price section and also updated
+in my total Inventory display in my Home page.
+![image alt](https://github.com/AlexMbuthia12/inventorymanageentlaravelapp/blob/master/Inventory%20readme%20imgs/Createview1.jpg?raw=true)
+
+This is my Make sale page yet to be styled that dynamically updates the inventory amount for the particular item, it also updates
+the Total Invemtory Value in my home page.
+![image alt](https://github.com/AlexMbuthia12/inventorymanageentlaravelapp/blob/master/Inventory%20readme%20imgs/makeSaleAnalytics.png?raw=true)
+
+This is my view Sales page that provides Analytical features for my system, it's also updated Dynamically.
+![image alt](https://github.com/AlexMbuthia12/inventorymanageentlaravelapp/blob/master/Inventory%20readme%20imgs/SolditemsAnalyticspage.jpg?raw=true)
 
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
