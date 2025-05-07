@@ -20,11 +20,20 @@
         </div>
 
         <!-- Display Total sales -->
-        <div class="mb-6 p-4 bg-gradient-to-r from-yellow-200 via-yellow-100 to-yellow-200 rounded-lg shadow-md text-center">
-            <h2 class="text-2xl font-semibold text-yellow-800">Total Sales</h2>
-            <p class="text-xl font-bold text-yellow-700">Ksh{{ number_format($totalSales, 2) }}</p>
-            <a href="{{ route('sales.index') }}" class="px-6 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-blue-600 transition">View Sales</a>
-        </div>
+       <!-- Display Total sales -->
+<div class="mb-6 p-6 bg-gradient-to-r from-yellow-200 via-yellow-100 to-yellow-200 rounded-lg shadow-md text-center">
+    <h2 class="text-2xl font-semibold text-yellow-800">Total Sales</h2>
+    <p class="text-xl font-bold text-yellow-700">Ksh{{ number_format($totalSales, 2) }}</p>
+
+    <!-- Add some spacing -->
+    <div class="mt-4">
+        <a href="{{ route('sales.index') }}"
+           class="inline-block mt-4 px-6 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-blue-600 transition">
+            View Sales
+        </a>
+    </div>
+</div>
+
         
 
         <section>

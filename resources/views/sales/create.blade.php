@@ -18,9 +18,8 @@
 @endsection --}}
 
 
-{{-- @extends('layouts.app')
 
-@section('content') --}}
+<x-guest-layout>
 <div class="container mx-auto p-6">
     <h1 class="text-2xl font-bold mb-4">Make Sale for {{ $item->name }}</h1>
 
@@ -42,4 +41,5 @@
         <button type="submit" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">Confirm Sale</button>
     </form>
 </div>
-{{-- @endsection --}}
+
+</x-guest-layout>

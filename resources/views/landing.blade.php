@@ -21,7 +21,7 @@
                     </a>
                 @else
                     <a href="{{ route('login') }}" class="px-6 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-blue-600 transition">
-                        Login
+                        Login 2
                     </a>
                     @if (Route::has('register'))
                         <a href="{{ route('register') }}" class="px-6 py-2 bg-purple-500 text-white font-semibold rounded hover:bg-purple-600 transition">
